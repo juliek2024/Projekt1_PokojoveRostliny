@@ -3,5 +3,4 @@ public class PlantException extends Exception {
         super(message);
 
     }
-
 }

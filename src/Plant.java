@@ -10,7 +10,8 @@ public class Plant implements Comparable<Plant> {
     private LocalDate watering;
     private long frequencyOfWatering;
 
-    public Plant(String name, String notes, LocalDate planted, LocalDate watering, Long frequencyOfWatering) throws PlantException {
+    public Plant(String name, String notes, LocalDate planted, LocalDate watering,
+                 Long frequencyOfWatering) throws PlantException {
         this.name = name;
         this.notes = notes;
         this.planted = planted;
@@ -62,18 +63,14 @@ public class Plant implements Comparable<Plant> {
     public void setWatering(LocalDate watering) throws PlantException {
         this.watering = watering;
         if (watering.isBefore(planted)) {
-            throw new PlantException("Datum zasazení nesmí být starší než datum zálivky! ");
+            throw new PlantException("Vypis seznamu rostlin není úplný! \nZkontroluj správnost zadání parametru 'Datum zasazení rostliny' = nesmí být starší, než datum zálivky! ");
         }
     }
 
-    public long getFrequencyOfWatering() {
-        return frequencyOfWatering;
-    }
-
     public void setFrequencyOfWatering(Long frequencyOfWatering) throws PlantException {
-        this.frequencyOfWatering = (long) frequencyOfWatering;
+        this.frequencyOfWatering = frequencyOfWatering;
         if (frequencyOfWatering <= 0) {
-            throw new PlantException("Frekvence zálivky nesmí se rovnat 0 anebo být záporná! ");
+            throw new PlantException("Vypis seznamu rostlin není úplný! \nZkontroluj správnost zadání parametru 'Frekvence zálivky' = nesmí se rovnat 0 anebo být záporný! ");
         }
     }
 
@@ -88,8 +85,8 @@ public class Plant implements Comparable<Plant> {
         return needWateringNow;
     }
 
-    public String getWateringInfo() {
-        String description = "Název květiny: " + name + ",datum poslední zálivky: "
+    public String getWateringDescription() {
+        String description = "Rostlina: " + name + ",datum poslední zálivky: "
               + watering + ", datum doporučené další zálivky: "
               + watering.plusDays(frequencyOfWatering);
         return description;
@@ -100,14 +97,16 @@ public class Plant implements Comparable<Plant> {
     }
 
     public String toFileString (String delimiter){
-        return name + delimiter + notes + delimiter + planted + delimiter + watering + delimiter + frequencyOfWatering;
+        return name + delimiter + notes + delimiter + planted + delimiter + watering + delimiter
+                + frequencyOfWatering;
     }
 
 
     @Override
     public String toString () {
-        return "Rostlina: " + name + " (" + notes + "), \n" +
-              '\t' + '\t' + '\t' + "Datum zasazeni = " + planted + "," + " datum posledni zalivky = " + watering + ", frekvence zalivky = " + frequencyOfWatering + ".";
+        return "Rostlina: " + name + " (" + notes + ")" + " Datum zasazeni = " + planted + ","
+                + " datum posledni zalivky = " + watering + ", frekvence zalivky = "
+                + frequencyOfWatering + ".";
     }
 
     @Override
@@ -128,9 +127,11 @@ public class Plant implements Comparable<Plant> {
             long frequencyOfWatering = Long.parseLong(parts[4].trim());
             return new Plant(name, notes, planted, watering, frequencyOfWatering);
         } catch (DateTimeParseException e) {
-            throw new PlantException("Chybny format data " + parts[3].trim() + " na radku: " + lineNumber);
+            throw new PlantException("Chybny format data poslední zálivky (" + parts[3].trim()
+                    + ") na radku: " + lineNumber);
         } catch (NumberFormatException ex) {
-            throw new PlantException("Chybny format frekvence zalivky " + parts[4].trim() + " na radku: " + lineNumber);
+            throw new PlantException("Chybny format frekvence zálivky (" + parts[4].trim()
+                    + ") na radku: " + lineNumber);
         }
     }
 }

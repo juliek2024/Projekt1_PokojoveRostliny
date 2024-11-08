@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,32 +13,34 @@ public class PlantsManager {
         return plantsList;
     }
 
-   // public void setPlantsList(List<Plant> plantsList) {
-       // this.plantsList = plantsList;
-  //  }
-
-    public void addPlant (Plant plant) {
-        plantsList.add(plant);
+    public void setPlantsList(List<Plant> plantsList) {
+        this.plantsList = plantsList;
     }
 
-    public Plant getPlant (int index) {
+    public List<Plant> addPlant (Plant plant) {
+        plantsList.add(plant);
+        return plantsList;
+    }
+
+    public Plant getPlant (int index){
         return plantsList.get(index);
     }
-
-    //public void removePlant (Plant plant) {
-       // plantsList.remove(plant);
-   // }
 
     public void removePlant (int index) {
         plantsList.remove(index);
     }
 
-    public List<Plant> listClone (List<Plant> plantsList) {
-        List<Plant> clonedList = new ArrayList<>(plantsList);
-        //for (Plant plant: plantsList) {
-            //clonedList.add(new Plant(""));
-        //}
-        return clonedList;
+    public List<Plant> getCopyPlant () {
+        return List.copyOf(Collections.unmodifiableCollection(plantsList));
+    }
+
+    public List<Plant> getWateringInfo() {
+        int index = 0; index++;
+        List<Plant> watering = new ArrayList<>();
+        for(Plant plant : plantsList) {
+            System.out.println(plant.getWateringDescription());
+        }
+        return watering;
     }
 
     public void plantFromFile(String filename, String delimiter) throws PlantException {
@@ -55,8 +58,7 @@ public class PlantsManager {
     }
 
     public void plantToFile(String filename, String delimiter) throws PlantException {
-        try (PrintWriter writer = new PrintWriter(
-                new BufferedWriter(new FileWriter(filename)))) {
+        try (PrintWriter writer = new PrintWriter((new FileWriter(filename)))) {
 
             for (Plant plant : plantsList) {
                 writer.println(plant.toFileString("\t"));

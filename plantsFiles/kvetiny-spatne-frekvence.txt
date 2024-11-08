@@ -1,3 +1,3 @@
-Fialka 1;	Popis fialky - je fialová a hezká; 2021-01-01; 2021-05-12; 3
-Vánoční hvězda; bez poznámky; 2021-04-01; 2021-05-10; 4
-Sukulent v koupelně; Nezalévá se; 2011-03-01; 2011-03-01; 36ř
+Fialka 1	Je fialová a hezká	2021-01-01	2021-05-12 	3
+Vánoční hvězda	Bez poznámky	2021-04-10	2021-05-01	4
+Sukulent	V koupelně se nezalévá	2011-03-01	2011-03-01	36ř
