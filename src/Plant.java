@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Plant implements Comparable<Plant> {
-    private String name;
+    private String name ;
     private String notes;
     private LocalDate planted;
     private LocalDate watering;
@@ -102,7 +102,7 @@ public class Plant implements Comparable<Plant> {
     }
 
 
-    @Override
+//    @Override
     public String toString () {
         return "Rostlina: " + name + " (" + notes + ")" + " Datum zasazeni = " + planted + ","
                 + " datum posledni zalivky = " + watering + ", frekvence zalivky = "
