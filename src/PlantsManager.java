@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,7 +30,8 @@ public class PlantsManager {
     }
 
     public List<Plant> getCopyPlant () {
-        return List.copyOf(Collections.unmodifiableCollection(plantsList));
+       // return new ArrayList<>(plantsList);
+        return List.copyOf(plantsList);
     }
 
     public List<Plant> getWateringInfo() {
