@@ -30,7 +30,6 @@ public class PlantsManager {
     }
 
     public List<Plant> getCopyPlant () {
-       // return new ArrayList<>(plantsList);
         return List.copyOf(plantsList);
     }
 

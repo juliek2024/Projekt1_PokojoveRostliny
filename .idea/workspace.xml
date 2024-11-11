@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef885d10-0005-4ea0-91fb-c9277aae4361" name="Changes" comment="2.verze = Úkol 7.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plantsFiles/kvetiny.txt" beforeDir="false" afterPath="$PROJECT_DIR$/plantsFiles/kvetiny.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlantsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlantsManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="ef885d10-0005-4ea0-91fb-c9277aae4361" name="Changes" comment="3.verze =Finalizace řešení 1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +20,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "juliek2024"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/juliek2024/Projekt1_PokojoveRostliny.git",
+    "accountId": "53289f6c-5e70-4a08-af78-b9a0650155cb"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
@@ -89,13 +95,38 @@
       <option name="project" value="LOCAL" />
       <updated>1731273468633</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="3.verze =Finalizace řešení 1">
+      <option name="closed" value="true" />
+      <created>1731355147975</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731355147975</updated>
+    </task>
+    <task id="LOCAL-00006" summary="3.verze =Finalizace řešení 1">
+      <option name="closed" value="true" />
+      <created>1731355209734</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731355209734</updated>
+    </task>
+    <task id="LOCAL-00007" summary="3.verze =Finalizace řešení 1">
+      <option name="closed" value="true" />
+      <created>1731355799315</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731355799315</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1.verze = Úkoly 1-6." />
     <MESSAGE value="2.verze = Úkol 7." />
-    <option name="LAST_COMMIT_MESSAGE" value="2.verze = Úkol 7." />
+    <MESSAGE value="3.verze =Finalizace řešení 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.verze =Finalizace řešení 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
