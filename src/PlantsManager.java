@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,9 +17,8 @@ public class PlantsManager {
         this.plantsList = plantsList;
     }
 
-    public List<Plant> addPlant (Plant plant) {
-        plantsList.add(plant);
-        return plantsList;
+    public void addPlant (Plant plant) {
+        this.plantsList.add(plant);
     }
 
     public Plant getPlant (int index){
@@ -29,12 +29,25 @@ public class PlantsManager {
         plantsList.remove(index);
     }
 
+    public void sortPlantName () {
+         plantsList.sort(Comparator.comparing(Plant::getName));
+    }
+
+    public void sortPlantWateringName () {
+        plantsList.sort(Comparator.comparing(Plant::getWatering).thenComparing(Plant::getName));
+    }
+
+    public void sortPlantWateringReversed() {
+        plantsList.sort(Comparator.comparing(Plant::getPlanted).reversed());
+    }
+
+
     public List<Plant> getCopyPlant () {
         return List.copyOf(plantsList);
     }
 
     public List<Plant> getWateringInfo() {
-        int index = 0; index++;
+        int index = 1; index++;
         List<Plant> watering = new ArrayList<>();
         for(Plant plant : plantsList) {
             System.out.println(plant.getWateringDescription());

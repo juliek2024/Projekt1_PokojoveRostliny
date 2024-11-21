@@ -8,28 +8,23 @@ public class Plant implements Comparable<Plant> {
     private String notes;
     private LocalDate planted;
     private LocalDate watering;
-    private long frequencyOfWatering;
+    private int frequencyOfWatering;
 
     public Plant(String name, String notes, LocalDate planted, LocalDate watering,
-                 Long frequencyOfWatering) throws PlantException {
+                 int frequencyOfWatering) throws PlantException {
         this.name = name;
         this.notes = notes;
         this.planted = planted;
         this.setWatering(watering);
-        this.setFrequencyOfWatering(frequencyOfWatering);
+        this.setFrequencyOfWatering((long) frequencyOfWatering);
     }
 
-    public Plant(String name, String notes) {
-        this.notes = "";
-        this.planted = LocalDate.now(); // vychozí nastavení datumu zasazení květiny na dnešní datum
-        this.watering = LocalDate.now(); // vychozí nastavení datumu poslední zálivky květiny na dnešní datum
+    public Plant(String name, int frequencyOfWatering) throws PlantException {
+        this (name, "", LocalDate.now(), LocalDate.now(), frequencyOfWatering);
     }
 
-    public Plant(String name) {
-        this.notes = "";
-        this.planted = LocalDate.now(); // vychozí nastavení datumu zasazení květiny na dnešní datum
-        this.watering = LocalDate.now(); // vychozí nastavení datumu poslední zálivky květiny na dnešní datum
-        this.frequencyOfWatering = 7L; // vychozí nastavení frekvence zálivky na 7 dní
+    public Plant(String name) throws PlantException {
+        this (name, "", LocalDate.now(), LocalDate.now(), 7);
     }
 
     public String getName() {
@@ -61,17 +56,18 @@ public class Plant implements Comparable<Plant> {
     }
 
     public void setWatering(LocalDate watering) throws PlantException {
-        this.watering = watering;
         if (watering.isBefore(planted)) {
-            throw new PlantException("Vypis seznamu rostlin není úplný! \nZkontroluj správnost zadání parametru 'Datum zasazení rostliny' = nesmí být starší, než datum zálivky! ");
+            throw new PlantException("Vypis seznamu rostlin není úplný! \nZkontroluj správnost zadaného parametru 'Datum zasazení rostliny' = nesmí být starší, než datum zálivky! ");
         }
+        this.watering = watering;
     }
 
     public void setFrequencyOfWatering(Long frequencyOfWatering) throws PlantException {
-        this.frequencyOfWatering = frequencyOfWatering;
         if (frequencyOfWatering <= 0) {
-            throw new PlantException("Vypis seznamu rostlin není úplný! \nZkontroluj správnost zadání parametru 'Frekvence zálivky' = nesmí se rovnat 0 anebo být záporný! ");
+            throw new PlantException("Vypis seznamu rostlin není úplný! \nZkontroluj správnost zadaného" +
+                    " parametru 'Frekvence zálivky' = nesmí se rovnat 0 anebo být záporný! ");
         }
+        this.frequencyOfWatering = Math.toIntExact(frequencyOfWatering);
     }
 
     public List<Plant> needWateringNow(int plantsList, Plant plant) {
@@ -125,7 +121,7 @@ public class Plant implements Comparable<Plant> {
             LocalDate planted = LocalDate.parse(parts[2].trim());
             LocalDate watering = LocalDate.parse(parts[3].trim());
             long frequencyOfWatering = Long.parseLong(parts[4].trim());
-            return new Plant(name, notes, planted, watering, frequencyOfWatering);
+            return new Plant(name, notes, planted, watering, (int) frequencyOfWatering);
         } catch (DateTimeParseException e) {
             throw new PlantException("Chybny format data poslední zálivky (" + parts[3].trim()
                     + ") na radku: " + lineNumber);
